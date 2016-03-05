@@ -13,8 +13,6 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="img/touch/apple-touch-icon-57x57-precomposed.png">
-        <link rel="shortcut icon" sizes="196x196" href="img/touch/touch-icon-196x196.png">
-        <link rel="shortcut icon" href="img/touch/apple-touch-icon.png">
 
         <!-- Tile icon for Win8 (144x144 + tile color) -->
         <meta name="msapplication-TileImage" content="img/touch/apple-touch-icon-144x144-precomposed.png">
@@ -31,9 +29,9 @@
         -->
 
         <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
-        <meta name="apple-mobile-web-app-capable" content="yes">
+<!--         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="apple-mobile-web-app-title" content="">
+        <meta name="apple-mobile-web-app-title" content=""> -->
 
         <!-- This script prevents links from opening in Mobile Safari. https://gist.github.com/1042026 -->
         <!--
@@ -43,15 +41,108 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/pensieve.css">
         <script src="js/vendor/modernizr-2.7.1.min.js"></script>
-    </head>
-    <body>
-
-        <!-- Add your site or application content here -->
-
         <script src="js/vendor/jquery-2.1.0.min.js"></script>
         <script src="js/helper.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/pensieve.js"></script>
+    </head>
+    <body>
+        <ul class="nav nav-tabs">
+            <li id="unlocked-tab" class="active"><a href="javascript:void(0);" onclick="switchToUnlocked()" >Unlocked Memories</a></li>
+            <li id="locked-tab"><a href="javascript:void(0);" onclick="switchToLocked()">Locked</a></li>
+        </ul>
 
+        <div class="main-content" id="unlocked-memories">
+            <table id="unlocked-table" class="memory-table">
+                <tbody>
+                    <tr>
+                        <td style="background-image:url(img/unlockedImages/1.jpg)";><div class="memory">
+                            <div class="title">Grandpa</div>
+                            <div class="mem-info">
+                                Created: 2/5/1979<br/>
+                                Unlocked: 2/5/2016
+                            </div>
+                        </div></td>
+                        <td style="background-image:url(img/unlockedImages/2.jpg)";><div class="memory">
+                            <div class="title">Dad</div>
+                            <div class="mem-info">
+                                Created: 2/5/1985<br/>
+                                Unlocked: 2/4/2016
+                            </div>
+                        </div></td>
+                    </tr>
+                    <tr>
+                        <td style="background-image:url(img/unlockedImages/3.jpg)";><div class="memory">
+                            <div class="title">Best Friend</div>
+                            <div class="mem-info">
+                                Created: 1/8/2016<br/>
+                                Unlocked: 2/5/2016
+                            </div>
+                        </div></td>
+                        <td style="background-image:url(img/unlockedImages/4.jpg)";><div class="memory">
+                            <div class="title">Mom</div>
+                            <div class="mem-info">
+                                Created: 10/6/1985<br/>
+                                Unlocked: 1/30/2016
+                            </div>
+                        </div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="main-content" id="locked-memories">
+            <table class="memory-table" id="locked-table">
+                <tbody>
+                    <tr>
+                        <td><div class="memory">
+                            <div class="title">Grandpa</div>
+                            <div class="mem-info">
+                                Created: 1/8/2016<br/>
+
+                            </div>
+                        </div></td>
+                        <td><div class="memory">
+                            <div class="title">Mom</div>
+                            <div class="mem-info">
+                                Created: 10/6/1985<br/>
+                            </div>
+                        </div></td>
+                    </tr>
+                    <tr>
+                        <td><div class="memory">
+                            <div class="title">Grandpa</div>
+                            <div class="mem-info">
+                                Created: 1/8/2016<br/>
+
+                            </div>
+                        </div></td>
+                        <td><div class="memory">
+                            <div class="title">Mom</div>
+                            <div class="mem-info">
+                                Created: 10/6/1985<br/>
+                            </div>
+                        </div></td>
+                    </tr>
+                    <tr>
+                        <td><div class="memory">
+                            <div class="title">Grandpa</div>
+                            <div class="mem-info">
+                                Created: 1/8/2016<br/>
+
+                            </div>
+                        </div></td>
+                        <td><div class="memory">
+                            <div class="title">Mom</div>
+                            <div class="mem-info">
+                                Created: 10/6/1985<br/>
+                            </div>
+                        </div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button id="create-btn" type="button" class="btn btn-lg center-block turn-btn">Create Memory</button>
     </body>
 </html>
