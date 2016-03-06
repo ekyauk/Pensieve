@@ -8,19 +8,21 @@ $(document).ready(function() {
         {'person':'Grandpa', 'created':'2/5/1975', 'unlocked':'2/25/2016', 'image':'img/unlockedImages/1.jpg', 'condition': 'it\'s your 16th birthday'},
         {'person':'Dad', 'created':'2/5/1985', 'unlocked':'2/4/2016', 'image':'img/unlockedImages/2.jpg', 'condition': 'you travel to New York'},
         {'person':'Robin', 'created':'1/6/2015', 'unlocked':'3/4/2016', 'image':'img/unlockedImages/3.jpg', 'condition':'you take your MCAT'},
-        {'person':'Mom', 'created':'6/6/1994', 'unlocked':'3/25/2016', 'image':'img/unlockedImages/4.jpg', 'condition':'you travel to Hawaii'}
+        {'person':'Mom', 'created':'6/6/1994', 'unlocked':'3/25/2016', 'image':'img/unlockedImages/4.jpg', 'condition':'you travel to Hawaii', 'message':'Happy 23rd birthday! Isnt it crazy that I am writing you before you are even born?! This is a photo of your dad and I when we got engaged yesterday. Thought you might like to see us when we were 23 as well.'}
     ];
 
     var resetPages = function() {
         $('#sent').hide();
         $('#memory-page').hide();
         $('#inbox').hide();
+        $('#create').hide();
         $('#inbox-btn').removeClass('selected-btn');
         $('#sent-btn').removeClass('selected-btn');
-        $('#create-btn').removeClass('selected-btn');
     };
 
     var loadMemoryPage = function(memory, title, hasUnlocked) {
+        $('#sent').hide();
+        $('#inbox').hide();
         $('#main-banner').hide();
         $('#alt-banner').show();
         $('#banner-next').hide();
@@ -71,7 +73,13 @@ $(document).ready(function() {
         loadTable('sent-table', sentMemories);
     };
 
-    $('#landing').fadeOut(1000);
+    var loadCreate = function() {
+        $('#alt-banner').hide();
+        $('#main-banner').show();
+        $('#create').show();
+    }
+
+    $('#landing').fadeOut(2000);
     loadTable('unlocked-table', unlockedMemories);
 
 
@@ -93,6 +101,7 @@ $(document).ready(function() {
     //alt-banner options
     $('#banner-close').click(function() {
         $('#banner-next').show();
+        $('.bottom-nav').show();
         if ($('#inbox-btn').hasClass('selected-btn')) {
             resetPages();
             loadInbox();
@@ -109,6 +118,9 @@ $(document).ready(function() {
     });
 
     $('#create-btn').click(function() {
+        resetPages();
+        $(this).hide();
+        loadCreate();
     });
 
 

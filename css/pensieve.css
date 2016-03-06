@@ -20,43 +20,79 @@
 
 body {
     overflow-x: hidden;
+    font-size: 20px;
     font-family: 'Lantinghei TC';
 }
 
-li.top-navi {
-    width: 50%;
+td {
+    font-size: 14px;
+}
+
+img.top-navi {
+    margin-top: 10px;
+    position: fixed;
+    z-index: 100;
+    top: 52px;
+    background-color: white;
     height: 51px;
+    width: 50%;
 }
 
 #unlocked-tab {
     background-image: url('../img/sketch/unlocked-selected.jpg');
+    left:0px;
 }
 
 
 #locked-tab {
     background-image: url('../img/sketch/locked-unselected.jpg');
+    left:50%;
 }
+
+/**** Pages ***/
 
 #landing {
     height: 100%;
-    width: auto;
+    width: 100%;
     position: fixed;
+    z-index: 101;
 }
-
 
 #sent {
     display: none;
 }
 
+#create {
+    display: none;
+}
+
+#memory-page {
+    display: none;
+    position: relative;
+}
+
+.page {
+    position: absolute;
+    top: 62px;
+}
+
+/************/
+
+/**** Banner ***/
+
 #main-banner {
     top: 0;
+    position: fixed;
+    z-index: 100;
 }
 
 #alt-banner {
+    position: fixed;
     background-color: black;
     width: 100%;
     height: 62px;
     display: none;
+    z-index: 100;
 }
 
 #banner-close {
@@ -82,21 +118,18 @@ li.top-navi {
     color: white;
 }
 
-.nav-tabs {
-    margin-top: 10px;
-    background-color: white;
-    color: white;
-}
+/************/
+
+/**** Memory Table ****/
 
 div.main-content {
     padding-top: 25px;
+    top: 113px;
     height: 100%;
+    position: absolute;
     overflow: scroll;
 }
 
-div.sent {
-    display: none;
-}
 
 div.memory {
     background-color: white;
@@ -110,16 +143,13 @@ table.memory-table {
     margin-right: auto;
 }
 
-#memory-popup {
-    height: 200px;
-    width: 200px;
-    background-color: white;
-    opacity: 0.80;
+td.memory-cell {
+    background-size: cover;
+    min-height: 100%;
+    min-width: 100%;
 }
 
-#memory-page {
-    display: none;
-}
+/************/
 
 #media-content {
     width: 100%;
@@ -130,23 +160,12 @@ table.memory-table {
 
 }
 
-td.memory-cell {
-    background-size: cover;
-    min-height: 100%;
-    min-width: 100%;
-}
+
 
 .title {
     font-weight: bold;
 }
 
-#memory-message {
-    font-size: 20px;
-}
-
-div.memory-header {
-    font-size: 20px;
-}
 table.memory-table td {
     width: 160px;
     height: 160px;
@@ -170,10 +189,32 @@ div.bottom-nav {
     font-size: 20px;
     width: 125px;
     height: 75px;
-    bottom: 0;
     line-height: 75px;
     text-align: center;
-    vertical-align: center;
+    bottom: 0;
+}
+div.create-options {
+    position: fixed;
+    background-color: #F78B0D;
+    color: white;
+    font-size: 20px;
+    width: 125px;
+    height: 75px;
+    left:125px;
+    line-height: 75px;
+    border-color: white;
+    border-width: 4px;
+    border-style: solid;
+    text-align: center;
+}
+#photo-btn {
+    bottom: 225px;
+}
+#video-btn {
+    bottom: 150px;
+}
+#sound-btn {
+    bottom: 75px;
 }
 #inbox-btn {
 
