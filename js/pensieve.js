@@ -111,6 +111,31 @@ $(document).ready(function() {
         }
     });
 
+
+    //create option buttons
+
+    $('.create-options').click(function() {
+        resetPages();
+        $('#main-banner').hide();
+        $('#alt-banner').show();
+        $('.create-nav').show();
+        $('.bottom-nav').hide();
+        $('#banner-text').text('Upload');
+    });
+
+    $('#photo-btn').click(function() {
+
+    });
+    $('#video-btn').click(function() {
+
+    });
+    $('#sound-btn').click(function() {
+
+    });
+
+    $('.create-nav').click(function() {
+        var step = $(this).attr('id');
+    });
     //bottom nav bar buttons
     $('#inbox-btn').click(function() {
         resetPages();
@@ -122,7 +147,6 @@ $(document).ready(function() {
         $(this).hide();
         loadCreate();
     });
-
 
 
     $('#unlocked-table').on('click', 'td', function() {

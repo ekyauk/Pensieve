@@ -130,6 +130,9 @@ div.main-content {
     overflow: scroll;
 }
 
+#sent-memories {
+    top: 62px;
+}
 
 div.memory {
     background-color: white;
@@ -238,15 +241,30 @@ div.create-options {
     border-bottom-width: 9px;
 }
 
-.nav-tabs > li > a,
-.nav-tabs > li > a:focus,
-.nav-tabs > li > a:hover {
-    color: white;
-    background-color: gray;
+/**** Create Navigation ****/
+div.create-nav {
+    background-repeat: no-repeat;
+    background-position: center;
+    display: none;
+    position: fixed;
+    height: 51px;
+    width: 94px;
+    top: 62px;
 }
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:focus,
-.nav-tabs > li.active > a:hover {
-    color: white;
-    background-color: black;
+
+#media {
+    left:0px;
+    background-image: url('../img/sketch/photo-selected.png');
+}
+#share {
+    left:94px;
+    background-image: url('../img/sketch/share-unselected.png');
+}
+#condition {
+    left:188px;
+    background-image: url('../img/sketch/condition-unselected.png');
+}
+#send {
+    right:0px;
+    background-image: url('../img/sketch/send-unselected.png');
 }
