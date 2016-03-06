@@ -114,12 +114,18 @@ $(document).ready(function() {
 
 
     //create option buttons
+    var createNavArr = ['media', 'share', 'condition', 'send'];
 
     var resetCreateNav = function() {
         for (var i = 0; i < $('.create-nav').length; i++) {
             var obj = $($('.create-nav')[i])
             obj.css('background-image', 'url(img/sketch/' + obj.attr('id') + '-unselected.png')
         }
+    }
+
+    var selectCreateNavItem = function(itemId) {
+        resetCreateNav();
+        $('#' + itemId).css('background-image', 'url(img/sketch/' + itemId + '-selected.png');
     }
 
     $('.create-options').click(function() {
@@ -142,10 +148,27 @@ $(document).ready(function() {
     });
 
     $('.create-nav').click(function() {
-        resetCreateNav();
         var step = $(this).attr('id');
-        $(this).css('background-image', 'url(img/sketch/' + step + '-selected.png');
+        selectCreateNavItem(step);
     });
+
+    $('#banner-next').click(function() {
+        for (var i = 0; i < createNavArr.length; i++) {
+            var imageUrl = $('#' + createNavArr[i]).css('background-image');
+            //Find the selected item
+            if (imageUrl.indexOf('-selected') != -1) {
+                var changeIndex = i + 1;
+                if (changeIndex == createNavArr.length) {
+                    //Finish sharing!
+                } else {
+                    //Pick the next item
+                    selectCreateNavItem(createNavArr[changeIndex]);
+                    return;
+                }
+            }
+        }
+    });
+
     //bottom nav bar buttons
     $('#inbox-btn').click(function() {
         resetPages();
