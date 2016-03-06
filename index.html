@@ -58,13 +58,18 @@
         <script src="js/pensieve.js"></script>
     </head>
     <body>
+
+        <!-- Splash page -->
         <img id="landing" src="img/sketch/landing.jpg"/>
-        <div data-role="popup" id="memory-popup"></div>
+
+        <!-- Banner with Text, Close, and the Next button -->
         <div id="alt-banner" >
             <img id="banner-close" src="img/sketch/close-browser.png"/>
             <div id="banner-text"></div>
             <img id="banner-next" src="img/sketch/right-arrow.png">
         </div>
+
+        <!-- Memory Page (Accessed from Unlocked or Sent memories) -->
         <div class="page" id="memory-page">
             <div id="memory-title" class="title memory-header"></div>
             <div id="creation-date" class="memory-header"></div>
@@ -72,6 +77,8 @@
             <div id="media-content"></div>
             <div id="memory-message"></div>
         </div>
+
+        <!-- Unlocked Memories -->
         <img id="main-banner" src="img/sketch/banner.png">
         <div id="inbox">
             <img id="unlocked-tab" class="top-navi"></img>
@@ -82,6 +89,8 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- Locked Memories -->
             <div class="main-content" id="locked-memories">
                 <table class="memory-table" id="locked-table">
                     <tbody>
@@ -134,6 +143,8 @@
                 </table>
             </div>
         </div>
+
+        <!-- Sent Memories -->
         <div id="sent">
             <div class="main-content" id="sent-memories">
                 <table id="sent-table" class="memory-table">
@@ -143,6 +154,7 @@
             </div>
         </div>
 
+        <!-- Memory Creation -->
         <div id="create" class="page">
             <div>Share a memory!</div>
             <div>You could tell your children a story about the first time you fell in love.</div>
@@ -157,6 +169,8 @@
         <div id="condition" class="create-nav"></div>
         <div id="send" class="create-nav"></div>
 
+
+        <!-- Bottom Navigation -->
         <div id="inbox-btn" class="bottom-nav selected-btn">Inbox</div>
         <div id="create-btn" class="bottom-nav">Create</div>
         <div id="sent-btn" class="bottom-nav">Sent</div>
