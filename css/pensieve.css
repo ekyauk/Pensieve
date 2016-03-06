@@ -28,6 +28,24 @@ td {
     font-size: 14px;
 }
 
+.unlock-param-text {
+    margin-top: 10px;
+    color: white;
+    position: relative;
+    /*z-index: 100;*/
+    top: -85px;
+    left: 10px;
+}
+
+.unlock-param-text2 {
+    margin-top: 10px;
+    color: white;
+    position: relative;
+    /*z-index: 100;*/
+    top: -67px;
+    left: 10px;
+}
+
 img.top-navi {
     margin-top: 10px;
     position: fixed;
@@ -36,6 +54,16 @@ img.top-navi {
     background-color: white;
     height: 51px;
     width: 50%;
+}
+
+.lock-icon {
+    width: 27px;
+    height: 27px;
+}
+
+.lock-icon2 {
+    width: 40px;
+    height: 40px;
 }
 
 #unlocked-tab {

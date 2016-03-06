@@ -5,10 +5,10 @@ $(document).ready(function() {
                         ];
 
     var unlockedMemories = [
-        {'person':'Grandpa', 'created':'2/5/1975', 'unlocked':'2/25/2016', 'image':'img/unlockedImages/1.jpg', 'condition': 'it\'s your 16th birthday'},
-        {'person':'Dad', 'created':'2/5/1985', 'unlocked':'2/4/2016', 'image':'img/unlockedImages/2.jpg', 'condition': 'you travel to New York'},
-        {'person':'Robin', 'created':'1/6/2015', 'unlocked':'3/4/2016', 'image':'img/unlockedImages/3.jpg', 'condition':'you take your MCAT'},
-        {'person':'Mom', 'created':'6/6/1994', 'unlocked':'3/25/2016', 'image':'img/unlockedImages/4.jpg', 'condition':'you travel to Hawaii', 'message':'Happy 23rd birthday! Isnt it crazy that I am writing you before you are even born?! This is a photo of your dad and I when we got engaged yesterday. Thought you might like to see us when we were 23 as well.'}
+        {'person':'Grandpa', 'icon':'landscape', 'created':'2/5/1975', 'unlocked':'2/25/2016', 'image':'img/unlockedImages/1.jpg', 'condition': 'it\'s your 16th birthday'},
+        {'person':'Dad', 'icon':'landscape', 'created':'2/5/1985', 'unlocked':'2/4/2016', 'image':'img/unlockedImages/2.jpg', 'condition': 'you travel to New York'},
+        {'person':'Robin', 'icon':'mail', 'created':'1/6/2015', 'unlocked':'3/4/2016', 'image':'img/unlockedImages/3.jpg', 'condition':'you take your MCAT'},
+        {'person':'Mom', 'icon':'mail','created':'6/6/1994', 'unlocked':'3/25/2016', 'image':'img/unlockedImages/4.jpg', 'condition':'you travel to Hawaii', 'message':'Happy 23rd birthday! Isnt it crazy that I am writing you before you are even born?! This is a photo of your dad and I when we got engaged yesterday. Thought you might like to see us when we were 23 as well.'}
     ];
 
     var resetPages = function() {
@@ -44,7 +44,7 @@ $(document).ready(function() {
         var tableContent = '';
         for (var i = 0; i < memoryArr.length; i++) {
             var memory = memoryArr[i];
-            var memoryHtml = '<div class="memory"><div class="title">' + memory['person'] + '</div><div class="mem-info">Created ' + memory['created'] + '<br/>' + (memory['unlocked'] != null ? 'Unlocked ' + memory['unlocked'] : '') +'</div></div>';
+            var memoryHtml = '<div class="memory"><div class="title">' + memory['person'] + '</div><div class="mem-info"><img class="lock-icon2" src="img/sketch/'+ memory['icon'] + '-unlock.png"/>Created ' + memory['created'] + '<br/>' + (memory['unlocked'] != null ? 'Unlocked ' + memory['unlocked'] : '') +'</div></div>';
             var tdHmtl = '<td class="memory-cell" id="' + tableId + i + '"style="background-image:url(' + memory['image'] + ');">' + memoryHtml + '</td>';
             if (i % 2 == 0) {
                 tdHmtl = '<tr>' + tdHmtl;
