@@ -1,21 +1,71 @@
+.ui-icon-loading {
+    background: url(http://code.jquery.com/mobile/1.1.0-rc.1/images/ajax-loader.png);
+    background-size: 46px 46px;
+    width:46px;
+    height:46px;
+    -webkit-transform: rotate(360deg);
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count:  infinite;
+    -webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes spin {
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+}
+
 #locked-memories {
     display: none;
 }
 
 body {
-    overflow: hidden;
+    overflow-x: hidden;
+    font-family: 'Lantinghei TC';
+}
+
+li.top-navi {
+    width: 50%;
+    height: 51px;
+}
+
+#unlocked-tab {
+    background-image: url('../img/sketch/unlocked-selected.jpg');
+}
+
+
+#locked-tab {
+    background-image: url('../img/sketch/locked-unselected.jpg');
+}
+
+#landing {
+    height: 100%;
+    width: auto;
+    position: fixed;
+}
+
+
+#sent {
+    display: none;
+}
+
+.banner {
+    top: 0;
 }
 
 .nav-tabs {
+    margin-top: 10px;
     background-color: white;
     color: white;
 }
 
 div.main-content {
-    background-color: black;
     padding-top: 25px;
-    height: 750px;
+    height: 100%;
     overflow: scroll;
+}
+
+div.sent {
+    display: none;
 }
 
 div.memory {
@@ -30,6 +80,33 @@ table.memory-table {
     margin-right: auto;
 }
 
+#memory-popup {
+    height: 200px;
+    width: 200px;
+    background-color: white;
+    opacity: 0.80;
+}
+
+#memory-page {
+    display: none;
+}
+
+#media-content {
+    width: 100%;
+    height: 375px;
+}
+
+.title {
+    font-weight: bold;
+}
+
+#memory-message {
+    font-size: 20px;
+}
+
+div.memory-header {
+    font-size: 20px;
+}
 table.memory-table td {
     width: 160px;
     height: 160px;
@@ -45,11 +122,39 @@ table#locked-table td {
     background-color: gray;
 }
 
+div.bottom-nav {
+    position: fixed;
+    display: inline-block;
+    background-color:black;
+    color: white;
+    font-size: 20px;
+    width: 125px;
+    height: 75px;
+    bottom: 0;
+    line-height: 75px;
+    text-align: center;
+    vertical-align: center;
+}
+#inbox-btn {
+
+}
+
 #create-btn {
-    position: absolute;
-    margin-left:-75px;
-    left:50%;
-    top: 90%
+    left:125px;
+    background-color: #F78B0D;
+    border-color: white;
+    border-width: 4px;
+    border-style: solid;
+}
+
+#sent-btn {
+    left:250px;
+}
+
+.selected-btn {
+    border-bottom-style: solid;
+    border-bottom-color: #F78B0D;
+    border-bottom-width: 9px;
 }
 
 .nav-tabs > li > a,

@@ -38,111 +38,110 @@
         <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
         -->
 
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/pensieve.css">
+        <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+        <script>
+            $(document).bind('mobileinit',function(){
+                $.mobile.changePage.defaults.changeHash = false;
+                $.mobile.hashListeningEnabled = false;
+                $.mobile.pushStateEnabled = false;
+            });
+        </script> 
         <script src="js/vendor/modernizr-2.7.1.min.js"></script>
-        <script src="js/vendor/jquery-2.1.0.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script src="js/helper.js"></script>
         <script src="js/main.js"></script>
         <script src="js/pensieve.js"></script>
     </head>
     <body>
-        <ul class="nav nav-tabs">
-            <li id="unlocked-tab" class="active"><a href="javascript:void(0);" onclick="switchToUnlocked()" >Unlocked Memories</a></li>
-            <li id="locked-tab"><a href="javascript:void(0);" onclick="switchToLocked()">Locked</a></li>
-        </ul>
-
-        <div class="main-content" id="unlocked-memories">
-            <table id="unlocked-table" class="memory-table">
-                <tbody>
-                    <tr>
-                        <td style="background-image:url(img/unlockedImages/1.jpg)";><div class="memory">
-                            <div class="title">Grandpa</div>
-                            <div class="mem-info">
-                                Created: 2/5/1979<br/>
-                                Unlocked: 2/5/2016
-                            </div>
-                        </div></td>
-                        <td style="background-image:url(img/unlockedImages/2.jpg)";><div class="memory">
-                            <div class="title">Dad</div>
-                            <div class="mem-info">
-                                Created: 2/5/1985<br/>
-                                Unlocked: 2/4/2016
-                            </div>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td style="background-image:url(img/unlockedImages/3.jpg)";><div class="memory">
-                            <div class="title">Best Friend</div>
-                            <div class="mem-info">
-                                Created: 1/8/2016<br/>
-                                Unlocked: 2/5/2016
-                            </div>
-                        </div></td>
-                        <td style="background-image:url(img/unlockedImages/4.jpg)";><div class="memory">
-                            <div class="title">Mom</div>
-                            <div class="mem-info">
-                                Created: 10/6/1985<br/>
-                                Unlocked: 1/30/2016
-                            </div>
-                        </div></td>
-                    </tr>
-                </tbody>
-            </table>
+        <img id="landing" src="img/sketch/landing.jpg"/>
+        <div data-role="popup" id="memory-popup"></div>
+        <div id="memory-page">
+            <div id="memory-title" class="title memory-header"></div>
+            <div id="creation-date" class="memory-header"></div>
+            <div id="unlock-condition" class="memory-header"></div>
+            <div id="media-content"></div>
+            <div id="memory-message"></div>
         </div>
-        <div class="main-content" id="locked-memories">
-            <table class="memory-table" id="locked-table">
-                <tbody>
-                    <tr>
-                        <td><div class="memory">
-                            <div class="title">Grandpa</div>
-                            <div class="mem-info">
-                                Created: 1/8/2016<br/>
+        <div id="inbox">
+            <img class="banner" src="img/sketch/banner.jpg">
+            <ul class="nav nav-tabs">
+                <li id="unlocked-tab" class="top-navi"></li>
+                <li id="locked-tab" class="top-navi"></li>
+            </ul>
+            <div class="main-content" id="unlocked-memories">
+                <table id="unlocked-table" class="memory-table">
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="main-content" id="locked-memories">
+                <table class="memory-table" id="locked-table">
+                    <tbody>
+                        <tr>
+                            <td><div class="memory">
+                                <div class="title">Grandpa</div>
+                                <div class="mem-info">
+                                    Created: 1/8/2016<br/>
 
-                            </div>
-                        </div></td>
-                        <td><div class="memory">
-                            <div class="title">Mom</div>
-                            <div class="mem-info">
-                                Created: 10/6/1985<br/>
-                            </div>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td><div class="memory">
-                            <div class="title">Grandpa</div>
-                            <div class="mem-info">
-                                Created: 1/8/2016<br/>
+                                </div>
+                            </div></td>
+                            <td><div class="memory">
+                                <div class="title">Mom</div>
+                                <div class="mem-info">
+                                    Created: 10/6/1985<br/>
+                                </div>
+                            </div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="memory">
+                                <div class="title">Grandpa</div>
+                                <div class="mem-info">
+                                    Created: 1/8/2016<br/>
 
-                            </div>
-                        </div></td>
-                        <td><div class="memory">
-                            <div class="title">Mom</div>
-                            <div class="mem-info">
-                                Created: 10/6/1985<br/>
-                            </div>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td><div class="memory">
-                            <div class="title">Grandpa</div>
-                            <div class="mem-info">
-                                Created: 1/8/2016<br/>
+                                </div>
+                            </div></td>
+                            <td><div class="memory">
+                                <div class="title">Mom</div>
+                                <div class="mem-info">
+                                    Created: 10/6/1985<br/>
+                                </div>
+                            </div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="memory">
+                                <div class="title">Grandpa</div>
+                                <div class="mem-info">
+                                    Created: 1/8/2016<br/>
 
-                            </div>
-                        </div></td>
-                        <td><div class="memory">
-                            <div class="title">Mom</div>
-                            <div class="mem-info">
-                                Created: 10/6/1985<br/>
-                            </div>
-                        </div></td>
-                    </tr>
-                </tbody>
-            </table>
+                                </div>
+                            </div></td>
+                            <td><div class="memory">
+                                <div class="title">Mom</div>
+                                <div class="mem-info">
+                                    Created: 10/6/1985<br/>
+                                </div>
+                            </div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <button id="create-btn" type="button" class="btn btn-lg center-block turn-btn">Create Memory</button>
+        <div id="sent">
+            <img class="banner" src="img/sketch/banner.jpg">
+            <div class="main-content" id="sent-memories">
+                <table id="sent-table" class="memory-table">
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="inbox-btn" class="bottom-nav selected-btn">Inbox</div>
+        <div id="create-btn" class="bottom-nav">Create</div>
+        <div id="sent-btn" class="bottom-nav">Sent</div>
     </body>
 </html>
