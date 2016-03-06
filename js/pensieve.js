@@ -16,6 +16,7 @@ $(document).ready(function() {
         $('#memory-page').hide();
         $('#inbox').hide();
         $('#create').hide();
+        $('.create-nav').hide();
         $('#inbox-btn').removeClass('selected-btn');
         $('#sent-btn').removeClass('selected-btn');
     };
