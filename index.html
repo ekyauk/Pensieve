@@ -191,8 +191,11 @@
             <div>You could tell your children a story about the first time you fell in love.</div>
 
             <div id="photo-btn" class="create-options">Photo</div>
+            <input type="file" capture="camera" accept="image/*" class="media-input" id="camera-input" >
             <div id="video-btn" class="create-options">Video</div>
+            <input type="file" accept="video/*;capture=camcorder" class="media-input" id="video-input">
             <div id="sound-btn" class="create-options">Sound</div>
+            <input type="file" accept="audio/*;capture=microphone" class="media-input" id="sound-input">
         </div>
 
         <div id="media" class="create-nav"></div>
@@ -200,6 +203,9 @@
         <div id="condition" class="create-nav"></div>
         <div id="send" class="create-nav"></div>
 
+
+        <div id="media-page">
+        </div>
 
         <!-- Bottom Navigation -->
         <div id="inbox-btn" class="bottom-nav selected-btn">Inbox</div>

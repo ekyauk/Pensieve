@@ -250,6 +250,15 @@ div.create-options {
     bottom: 75px;
 }
 
+/**** Create pages ****/
+#media-page {
+    display: none;
+}
+
+input.media-input {
+    display: none;
+}
+
 /**** Bottom Navigation ****/
 
 #inbox-btn {

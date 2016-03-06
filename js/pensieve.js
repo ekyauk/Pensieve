@@ -128,6 +128,14 @@ $(document).ready(function() {
         $('#' + itemId).css('background-image', 'url(img/sketch/' + itemId + '-selected.png');
     }
 
+    var showCreateNavPage = function(step) {
+        for (var i = 0; i < createNavArr.length; i++) {
+            var nav = createNavArr[i];
+            $('#' + nav + '-page').hide();
+        }
+        $('#' + step + '-page').show();
+    }
+
     $('.create-options').click(function() {
         resetPages();
         $('#main-banner').hide();
@@ -135,21 +143,26 @@ $(document).ready(function() {
         $('.create-nav').show();
         $('.bottom-nav').hide();
         $('#banner-text').text('Upload');
+        $('#media-page').show();
     });
 
     $('#photo-btn').click(function() {
+        $('#camera-input').trigger('click');
 
     });
+
     $('#video-btn').click(function() {
-
+        $('#video-input').trigger('click');
     });
-    $('#sound-btn').click(function() {
 
+    $('#sound-btn').click(function() {
+        $('#sound-input').trigger('click');
     });
 
     $('.create-nav').click(function() {
         var step = $(this).attr('id');
         selectCreateNavItem(step);
+        showCreateNavPage(step);
     });
 
     $('#banner-next').click(function() {
