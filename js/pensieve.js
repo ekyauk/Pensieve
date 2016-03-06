@@ -44,7 +44,7 @@ $(document).ready(function() {
         var tableContent = '';
         for (var i = 0; i < memoryArr.length; i++) {
             var memory = memoryArr[i];
-            var memoryHtml = '<div class="memory"><div class="title">' + memory['person'] + '</div><div class="mem-info"><img class="lock-icon2" src="img/sketch/'+ memory['icon'] + '-unlock.png"/>Created ' + memory['created'] + '<br/>' + (memory['unlocked'] != null ? 'Unlocked ' + memory['unlocked'] : '') +'</div></div>';
+            var memoryHtml = '<div class="memory"><div style="float: left; position: relative; top: 2px;"><img class="lock-icon2" src="img/sketch/'+ memory['icon'] + '-unlock.png"/></div><div class="title">' + memory['person'] + '</div><div class="mem-info" style="font-size: 11px">Created ' + memory['created'] + '<br/>' + (memory['unlocked'] != null ? 'Unlocked ' + memory['unlocked'] : '') +'</div></div>';
             var tdHmtl = '<td class="memory-cell" id="' + tableId + i + '"style="background-image:url(' + memory['image'] + ');">' + memoryHtml + '</td>';
             if (i % 2 == 0) {
                 tdHmtl = '<tr>' + tdHmtl;
@@ -76,7 +76,8 @@ $(document).ready(function() {
 
     var loadCreate = function() {
         $('#alt-banner').hide();
-        $('#main-banner').show();
+        $('#main-banner').hide(); // TODO: for some reason this doesn't work... the banner is
+                                  // there regardless. Don't understand this.
         $('#create').show();
     }
 

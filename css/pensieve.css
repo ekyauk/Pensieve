@@ -62,9 +62,10 @@ img.top-navi {
 }
 
 .lock-icon2 {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
 }
+
 
 #unlocked-tab {
     background-image: url('../img/sketch/unlocked-selected.jpg');
