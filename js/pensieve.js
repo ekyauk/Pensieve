@@ -115,6 +115,13 @@ $(document).ready(function() {
 
     //create option buttons
 
+    var resetCreateNav = function() {
+        for (var i = 0; i < $('.create-nav').length; i++) {
+            var obj = $($('.create-nav')[i])
+            obj.css('background-image', 'url(img/sketch/' + obj.attr('id') + '-unselected.png')
+        }
+    }
+
     $('.create-options').click(function() {
         resetPages();
         $('#main-banner').hide();
@@ -135,7 +142,9 @@ $(document).ready(function() {
     });
 
     $('.create-nav').click(function() {
+        resetCreateNav();
         var step = $(this).attr('id');
+        $(this).css('background-image', 'url(img/sketch/' + step + '-selected.png');
     });
     //bottom nav bar buttons
     $('#inbox-btn').click(function() {
