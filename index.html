@@ -39,20 +39,20 @@
         -->
 
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/pensieve.css">
-        <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+        <script src="js/vendor/jquery-2.1.0.min.js"></script>
         <script>
             $(document).bind('mobileinit',function(){
                 $.mobile.changePage.defaults.changeHash = false;
                 $.mobile.hashListeningEnabled = false;
                 $.mobile.pushStateEnabled = false;
             });
-        </script> 
+        </script>
         <script src="js/vendor/modernizr-2.7.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/vendor/jquery.mobile-1.4.5.min.js"></script>
         <script src="js/helper.js"></script>
         <script src="js/main.js"></script>
         <script src="js/pensieve.js"></script>
@@ -60,6 +60,11 @@
     <body>
         <img id="landing" src="img/sketch/landing.jpg"/>
         <div data-role="popup" id="memory-popup"></div>
+        <div id="alt-banner" >
+            <img id="banner-close" src="img/sketch/close-browser.png"/>
+            <div id="banner-text"></div>
+            <img id="banner-next" src="img/sketch/right-arrow.png">
+        </div>
         <div id="memory-page">
             <div id="memory-title" class="title memory-header"></div>
             <div id="creation-date" class="memory-header"></div>
@@ -67,8 +72,8 @@
             <div id="media-content"></div>
             <div id="memory-message"></div>
         </div>
+        <img id="main-banner" src="img/sketch/banner.png">
         <div id="inbox">
-            <img class="banner" src="img/sketch/banner.jpg">
             <ul class="nav nav-tabs">
                 <li id="unlocked-tab" class="top-navi"></li>
                 <li id="locked-tab" class="top-navi"></li>
@@ -132,7 +137,6 @@
             </div>
         </div>
         <div id="sent">
-            <img class="banner" src="img/sketch/banner.jpg">
             <div class="main-content" id="sent-memories">
                 <table id="sent-table" class="memory-table">
                     <tbody>
