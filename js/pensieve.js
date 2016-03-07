@@ -1,15 +1,17 @@
 
 $(document).ready(function() {
 
-    var sentMemories = [{'person':'Dad', 'created':'3/5/2016', 'image':'img/cameraroll/1.jpg', 'message':'test memory', 'icon':'photo', 'condition':'50th birthday'}
+    var sentMemories = [{'person':'Dad', 'created':'3/5/2016', 'media':'img/cameraroll/1.jpg', 'message':'test memory', 'icon':'photo', 'condition':'50th birthday'}
                         ];
 
     var unlockedMemories = [
-        {'person':'Grandpa', 'icon':'photo', 'created':'2/5/1975', 'unlocked':'2/25/2016', 'image':'img/unlockedImages/1.jpg', 'condition': 'it\'s your 16th birthday'},
-        {'person':'Dad', 'icon':'photo', 'created':'2/5/1985', 'unlocked':'2/4/2016', 'image':'img/unlockedImages/2.jpg', 'condition': 'you travel to New York'},
-        {'person':'Robin', 'icon':'mail', 'created':'1/6/2015', 'unlocked':'3/4/2016', 'image':'img/unlockedImages/3.jpg', 'condition':'you take your MCAT'},
-        {'person':'Mom', 'icon':'mail','created':'6/6/1994', 'unlocked':'3/25/2016', 'image':'img/unlockedImages/4.jpg', 'condition':'you travel to Hawaii', 'message':'Happy 23rd birthday! Isnt it crazy that I am writing you before you are even born?! This is a photo of your dad and I when we got engaged yesterday. Thought you might like to see us when we were 23 as well.'}
+        {'person':'Grandpa', 'icon':'photo', 'created':'2/5/1975', 'unlocked':'2/25/2016', 'media':'img/unlockedImages/1.jpg', 'condition': 'it\'s your 16th birthday'},
+        {'person':'Dad', 'icon':'photo', 'created':'2/5/1985', 'unlocked':'2/4/2016', 'media':'img/unlockedImages/2.jpg', 'condition': 'you travel to New York'},
+        {'person':'Robin', 'icon':'mail', 'created':'1/6/2015', 'unlocked':'3/4/2016', 'media':'img/unlockedImages/3.jpg', 'condition':'you take your MCAT'},
+        {'person':'Mom', 'icon':'mail','created':'6/6/1994', 'unlocked':'3/25/2016', 'media':'img/unlockedImages/4.jpg', 'condition':'you travel to Hawaii', 'message':'Happy 23rd birthday! Isnt it crazy that I am writing you before you are even born?! This is a photo of your dad and I when we got engaged yesterday. Thought you might like to see us when we were 23 as well.'}
     ];
+
+    var currentMemory = {};
 
     var resetPages = function() {
         $('#sent').hide();
@@ -17,6 +19,7 @@ $(document).ready(function() {
         $('#inbox').hide();
         $('#create').hide();
         $('.create-nav').hide();
+        $('#create-btn').show();
         $('#inbox-btn').removeClass('selected-btn');
         $('#sent-btn').removeClass('selected-btn');
     };
@@ -32,9 +35,9 @@ $(document).ready(function() {
         $('#memory-title').text(title);
         $('#creation-date').text('Created on ' + memory['created']);
 
-        var unlockMessage = (hasUnlocked ? 'Unlocked when ' : 'Unlock when ') + memory['condition'];
+        var unlockMessage = (hasUnlocked ? 'Unlocked at ' : 'Unlock at ') + memory['condition'];
         $('#unlock-condition').text(unlockMessage);
-        $('#media-content').css('background-image', 'url(' + memory['image'] + ')')
+        $('#media-content').css('background-image', 'url(' + memory['media'] + ')')
         $('#memory-message').text(memory['message']);
     };
 
@@ -45,7 +48,7 @@ $(document).ready(function() {
         for (var i = 0; i < memoryArr.length; i++) {
             var memory = memoryArr[i];
             var memoryHtml = '<div class="memory"><div style="float: left; position: relative; top: 2px;"><img class="lock-icon2" src="img/sketch/'+ memory['icon'] + '-icon.png"/></div><div class="title">' + memory['person'] + '</div><div class="mem-info" style="font-size: 11px">Created ' + memory['created'] + '<br/>' + (memory['unlocked'] != null ? 'Unlocked ' + memory['unlocked'] : '<br/>') +'</div></div>';
-            var tdHmtl = '<td class="memory-cell" id="' + tableId + i + '"style="background-image:url(' + memory['image'] + ');">' + memoryHtml + '</td>';
+            var tdHmtl = '<td class="memory-cell" id="' + tableId + i + '"style="background-image:url(' + memory['media'] + ');">' + memoryHtml + '</td>';
             if (i % 2 == 0) {
                 tdHmtl = '<tr>' + tdHmtl;
             } else {
@@ -99,10 +102,11 @@ $(document).ready(function() {
         $('#unlocked-memories').hide();
     });
 
-    //alt-banner options
-    $('#banner-close').click(function() {
-        $('#banner-next').show();
+
+    var exitCreateProcess = function() {
+        $('#banner-next').show(); //so the button shows next time
         $('.bottom-nav').show();
+        hideAllCreatePages();
         if ($('#inbox-btn').hasClass('selected-btn')) {
             resetPages();
             loadInbox();
@@ -110,6 +114,10 @@ $(document).ready(function() {
             resetPages();
             loadSent();
         }
+    }
+    //alt-banner options
+    $('#banner-close').click(function() {
+        exitCreateProcess();
     });
 
 
@@ -126,6 +134,13 @@ $(document).ready(function() {
     var selectCreateNavItem = function(itemId) {
         resetCreateNav();
         $('#' + itemId).css('background-image', 'url(img/sketch/' + itemId + '-selected.png');
+    }
+
+    var hideAllCreatePages = function() {
+        for (var i = 0; i < createNavArr.length; i++) {
+            var nav = createNavArr[i];
+            $('#' + nav + '-page').hide();
+        }
     }
 
     var showCreateNavPage = function(step) {
@@ -158,17 +173,20 @@ $(document).ready(function() {
     $('#photo-btn').click(function() {
         $('#camera-input').trigger('click');
         $('#preview-icon').attr('src', 'img/sketch/photo-icon.png');
+        currentMemory['icon'] = 'photo';
 
     });
 
     $('#video-btn').click(function() {
         $('#video-input').trigger('click');
         $('#preview-icon').attr('src', 'img/sketch/video-icon.png');
+        currentMemory['icon'] = 'video';
     });
 
     $('#sound-btn').click(function() {
         $('#sound-input').trigger('click');
         $('#preview-icon').attr('src', 'img/sketch/sound-icon.png');
+        currentMemory['icon'] = 'sound';
     });
 
 // Rendering media
@@ -178,6 +196,7 @@ $(document).ready(function() {
         reader.onload = function(e) {
             $('#' + mediaId).attr('src', e.target.result);
             $('#media-preview').css('background-image', 'url(' + e.target.result +')');
+            currentMemory['media'] = e.target.result;
         }
 
         reader.readAsDataURL(url);
@@ -211,7 +230,7 @@ $(document).ready(function() {
             if (imageUrl.indexOf('-selected') != -1) {
                 var changeIndex = i + 1;
                 if (changeIndex == createNavArr.length) {
-                    //Finish sharing!
+                    sendMemory();
                 } else {
                     //Pick the next item
                     var nextStep = createNavArr[changeIndex];
@@ -330,6 +349,26 @@ $(document).ready(function() {
             loadMemoryPage(unlockedMemories[index], 'Memory from ' + unlockedMemories[index]['person'], true);
         }
     });
+
+    //Final Sending!
+
+    var sendMemory = function() {
+        var recipients = sharedUsers();
+        var recipientsText = '';
+        for (var i = 0; i < recipients.length; i++) {
+            recipientsText += recipients[i];
+            if (i < recipients.length -1) recipientsText += ', '
+        }
+        var currentDate = new Date();
+        currentMemory['condition'] = $('#condition-text').val();
+        currentMemory['person'] = recipientsText;
+        currentMemory['created'] = currentDate.toDateString();
+        currentMemory['message'] = $('#create-message').val();
+        var newMemory = jQuery.extend(true, {}, currentMemory);
+        sentMemories.push(newMemory);
+        currentMemory = {};
+        exitCreateProcess();
+    }
 
     $('#sent-table').on('click', 'td', function() {
         var id = $(this).attr('id');
