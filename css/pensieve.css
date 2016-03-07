@@ -295,6 +295,35 @@ input.media-input {
     display: none;
 }
 
+/**** Condition checkboxes *****/
+
+.share-cb {
+    display: inline-block;
+    width: 49px;
+    height: 49px;
+    position: relative;
+    top: 17px;
+    margin-left: 30px;
+}
+
+.unchecked {
+    background:url('../img/sketch/empty-checkbox.png') left top no-repeat;
+}
+.checked {
+    background:url('../img/sketch/checked-box.png') left top no-repeat;
+}
+
+div.cb-label {
+    display: inline-block;
+    font-weight: 500;
+    padding-left: 5px;
+}
+
+div.share-heading {
+    margin-left: 30px;
+    font-weight: 500;
+}
+
 /**** Bottom Navigation ****/
 
 #inbox-btn {
@@ -323,11 +352,13 @@ input.media-input {
 div.create-nav {
     background-repeat: no-repeat;
     background-position: center;
+    background-color: white;
     display: none;
     position: fixed;
     height: 51px;
     width: 94px;
     top: 62px;
+    z-index: 100;
 }
 
 #media {

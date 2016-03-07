@@ -205,6 +205,22 @@ $(document).ready(function() {
         }
     });
 
+    //Sharing
+
+    $('.share-cb').click(function() {
+        if ($(this).hasClass('unchecked')) {
+            $(this).removeClass('unchecked');
+            $(this).addClass('checked');
+        } else {
+            $(this).removeClass('checked');
+            $(this).addClass('unchecked');
+        }
+    });
+
+    $('.checked').click(function() {
+
+    });
+
     //bottom nav bar buttons
     $('#inbox-btn').click(function() {
         resetPages();
