@@ -14,6 +14,11 @@
     to {-webkit-transform: rotate(360deg);}
 }
 
+@font-face {
+    font-family: 'Lantinghei TC';
+    src: url('../font/Lantinghei.ttc') format('truetype');
+}
+
 #locked-memories {
     display: none;
 }
