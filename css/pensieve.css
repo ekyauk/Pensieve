@@ -267,6 +267,17 @@ div.create-options {
     top: 120px;
 }
 
+.condition-icon {
+    width: 90px;
+    height: 90px;
+}
+
+#condition-page {
+    display: none;
+    position: absolute;
+    top: 120px;
+}
+
 #media-container {
     position: fixed;
     display: block;
