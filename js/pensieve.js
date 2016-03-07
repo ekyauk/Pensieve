@@ -66,14 +66,6 @@ $(document).ready(function() {
         loadTable('unlocked-table', unlockedMemories);
     };
 
-    var loadSpecificConditionPage = function(pageToLoad) {
-        $('#location-condition-choice-page').hide();
-        $('#life-event-condition-choice-page').hide();
-        $('#time-condition-choice-page').hide();
-        $('#main-condition-choice-page').hide();
-        $('#' + pageToLoad + '-condition-choice-page').show();
-    };
-
     var loadSent = function() {
         $('#sent-btn').addClass('selected-btn');
         $('#sent').show();
@@ -146,10 +138,7 @@ $(document).ready(function() {
         if (step == 'media') bannerText = 'Upload';
         if (step == 'share') bannerText = 'Share with';
         if (step == 'send') bannerText = 'Finish Sharing';
-        if (step == 'condition') {
-            bannerText = 'Set Condition';
-            loadSpecificConditionPage('main')
-        }
+        if (step == 'condition') bannerText = 'Set Condition';
 
         $('#banner-text').text(bannerText);
     }
@@ -276,17 +265,34 @@ $(document).ready(function() {
     });
 
 
-    //sharing condition
-    $('#location-condition-butt').click(function() {
-        loadSpecificConditionPage('location')
-    });
+    //sharing conditions
+    var loadChosenCondition = function(condition) {
+        $('#selected-condition').attr('src', 'img/sketch/' + condition + '-selected.png');
+        $('#selected-condition').attr('name', condition);
+        var conditionInstructions = '';
+        var conditionPlaceholder = '';
+        if (condition == 'time') {
+            conditionInstructions = 'Enter a date and time.'
+            conditionPlaceholder = 'e.g. 3/6/2016'
+        } else
 
-    $('#time-condition-butt').click(function() {
-        loadSpecificConditionPage('time')
-    });
+        if (condition == 'location') {
+            conditionInstructions = 'Enter location or address.'
+            conditionPlaceholder = 'e.g. Paris, France'
+        } else
 
-    $('#life-event-condition-butt').click(function() {
-        loadSpecificConditionPage('life-event')
+        if (condition == 'life-event') {
+            conditionInstructions = 'Enter a specific life event.'
+            conditionPlaceholder = 'e.g. on your marriage date'
+        }
+        $('#condition-instructions').text(conditionInstructions);
+        $('#condition-text').attr('placeholder', conditionPlaceholder);
+    };
+
+    $('.condition-icon').click(function() {
+        loadChosenCondition($(this).attr('name'));
+        $('#choose-condition-page').hide();
+        $('#chosen-page').show();
     });
 
 //send
@@ -298,7 +304,19 @@ $(document).ready(function() {
             if (i < recipients.length -1) recipientsText += ', '
         }
         $('#final-users').text(recipientsText);
+
+        var condition = $('#selected-condition').attr('name');
+        var prep = '';
+        if (condition == 'time' || condition == 'life-event') {
+            prep = '&nbsp;on&nbsp;';
+        } else
+        if (condition == 'location') {
+            prep = '&nbsp;at&nbsp;';
+        }
+        $('#condition-preposition').html(prep);
+        $('#final-condition').text($('#condition-text').val());
     }
+
 
     $('#send').click(function() {
         loadPreviewText();
