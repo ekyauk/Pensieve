@@ -199,6 +199,7 @@ $(document).ready(function() {
                 } else {
                     //Pick the next item
                     selectCreateNavItem(createNavArr[changeIndex]);
+                    showCreateNavPage(createNavArr[changeIndex]);
                     return;
                 }
             }
