@@ -213,14 +213,14 @@
         <div id="condition-page">
             <!-- of course, you should move the inline CSS style to your stylesheet -->
             <!-- main container, width = 70% of page, centered -->
-            <div style="margin:0px auto; width:90%">
-            <Center>
-                <h3>
-                    Set unlock condition
-                    <hr>
-                </h3>
-            </Center>
-             <!-- columns divs, float left, no margin so there is no space between column, width=1/3 -->
+            <div id="main-condition-choice-page">
+                <Center>
+                    <h3>
+                        Set unlock condition
+                        <hr>
+                    </h3>
+                </Center>
+                <!-- columns divs, float left, no margin so there is no space between column, width=1/3 -->
                 <div id="time-condition-box" style="float:left; margin:0; width:33%;">
                     <center>    
                         <img id='time-condition-butt' class='condition-icon' src="img/sketch/time-icon.png">
@@ -229,10 +229,10 @@
                 </div>
 
                 <div id="location-condition-box" style="float:left; margin:0;width:33%;">
-                    <center>
+                    <Center>
                         <img id='location-condition-butt' class='condition-icon' src="img/sketch/location-icon.png">
                         Location
-                    </center>
+                    </Center>
                 </div>
 
                 <div id="life-event-condition-box" style="float:left; margin:0;width:33%">
@@ -242,7 +242,70 @@
                     </center>
                 </div>
             </div>
+
+            <div id="location-condition-choice-page" style="display: none; width: 370px;">
+                <Center>
+                    <h3>
+                        Set unlock condition
+                        <hr>
+                    </h3>
+                </Center>
+                <!-- columns divs, float left, no margin so there is no space between column, width=1/3 -->
+
+                <div id="location-condition-box" style="position: fixed; left: 123px; margin:0;width:33%;">
+                    <center>
+                        <img id='location-condition-butt' class='condition-icon' src="img/sketch/location-icon.png">
+                        Location
+                        <br />
+                        <br />
+                        <input type="text" name="location input" value="e.g. Paris, France">
+                    </center>
+                </div>
+            </div>
+
+            <div id="life-event-condition-choice-page" style="display: none; width: 370px;">
+                <Center>
+                    <h3>
+                        Set unlock condition
+                        <hr>
+                    </h3>
+                </Center>
+                <!-- columns divs, float left, no margin so there is no space between column, width=1/3 -->
+
+                <div style="position: fixed; left: 123px; margin:0;width:33%;">
+                    <center>
+                        <img  class='condition-icon' src="img/sketch/life-event-icon.png">
+                        Life Event
+                        <br />
+                        <br />
+                        <input type="text" name="location input" value="e.g. Jenn's Wedding">
+                    </center>
+                </div>
+            </div>
+
+            <div id="time-condition-choice-page" style="display: none; width: 370px;">
+                <Center>
+                    <h3>
+                        Set unlock condition
+                        <hr>
+                    </h3>
+                </Center>
+                <!-- columns divs, float left, no margin so there is no space between column, width=1/3 -->
+                
+                <div style="position: fixed; left: 123px; margin:0;width:33%;">
+                    <center>
+                        <img id='location-condition-butt' class='condition-icon' src="img/sketch/time-icon.png">
+                        Location
+                        <br />
+                        <br />
+                        <label for="date time"> Enter Date/Time : </label><input id="meeting" type="date" value="2017-01-13"/>
+                    </center>
+                </div>
+            </div>
+
         </div>
+
+
 
         <div id="share-page">
 

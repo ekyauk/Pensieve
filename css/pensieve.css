@@ -276,6 +276,7 @@ div.create-options {
     display: none;
     position: absolute;
     top: 120px;
+    width: 370px;
 }
 
 #media-container {

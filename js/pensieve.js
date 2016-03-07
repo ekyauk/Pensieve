@@ -66,6 +66,14 @@ $(document).ready(function() {
         loadTable('unlocked-table', unlockedMemories);
     };
 
+    var loadSpecificConditionPage = function(pageToLoad) {
+        $('#location-condition-choice-page').hide();
+        $('#life-event-condition-choice-page').hide();
+        $('#time-condition-choice-page').hide();
+        $('#main-condition-choice-page').hide();
+        $('#' + pageToLoad + '-condition-choice-page').show();
+    };
+
     var loadSent = function() {
         $('#sent-btn').addClass('selected-btn');
         $('#sent').show();
@@ -137,8 +145,11 @@ $(document).ready(function() {
         var bannerText = '';
         if (step == 'media') bannerText = 'Upload';
         if (step == 'share') bannerText = 'Share with';
-        if (step == 'condition') bannerText = 'Set Condition';
         if (step == 'send') bannerText = 'Finish Sharing';
+        if (step == 'condition') {
+            bannerText = 'Set Condition';
+            loadSpecificConditionPage('main')
+        }
 
         $('#banner-text').text(bannerText);
     }
@@ -235,6 +246,20 @@ $(document).ready(function() {
         resetPages();
         loadInbox();
     });
+
+    //bottom nav bar buttons
+    $('#location-condition-butt').click(function() {
+        loadSpecificConditionPage('location')
+    });
+
+    $('#time-condition-butt').click(function() {
+        loadSpecificConditionPage('time')
+    });
+
+    $('#life-event-condition-butt').click(function() {
+        loadSpecificConditionPage('life-event')
+    });
+
 
     $('#create-btn').click(function() {
         resetPages();
