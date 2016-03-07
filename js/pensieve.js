@@ -127,13 +127,14 @@ $(document).ready(function() {
     var resetCreateNav = function() {
         for (var i = 0; i < createNavArr.length; i++) {
             var obj = $('#' + createNavArr[i])
-            obj.css('background-image', 'url(img/sketch/' + obj.attr('id') + '-unselected.png')
+            obj.css('background-image', 'url(img/sketch/' + obj.attr('id') + '-unselected.png)')
         }
     }
 
     var selectCreateNavItem = function(itemId) {
         resetCreateNav();
-        $('#' + itemId).css('background-image', 'url(img/sketch/' + itemId + '-selected.png');
+        $('#' + itemId).css('background-image', 'url(img/sketch/' + itemId + '-selected.png)');
+        console.log($('#' + itemId).css('background-image'));
     }
 
     var hideAllCreatePages = function() {
@@ -218,7 +219,8 @@ $(document).ready(function() {
         if (step != 'create-nav-line') {
             selectCreateNavItem(step);
             showCreateNavPage(step);
-        } else if (step != 'send') {
+        }
+        if (step != 'send') {
             $('#final-users').empty();
         }
     });
