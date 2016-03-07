@@ -76,8 +76,7 @@ $(document).ready(function() {
 
     var loadCreate = function() {
         $('#alt-banner').hide();
-        $('#main-banner').hide(); // TODO: for some reason this doesn't work... the banner is
-                                  // there regardless. Don't understand this.
+        $('#main-banner').show();
         $('#create').show();
     }
 
@@ -140,13 +139,15 @@ $(document).ready(function() {
     $('.create-options').click(function() {
         resetPages();
         $('#main-banner').hide();
-        $('#alt-banner').show();
         $('.create-nav').show();
         $('.bottom-nav').hide();
+        $('#alt-banner').show();
         $('#banner-text').text('Upload');
         $('#media-page').show();
     });
 
+
+// Loading media
     $('#photo-btn').click(function() {
         $('#camera-input').trigger('click');
 
@@ -159,6 +160,27 @@ $(document).ready(function() {
     $('#sound-btn').click(function() {
         $('#sound-input').trigger('click');
     });
+
+// Rendering media
+
+    var loadMedia = function(url, mediaId) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#' + mediaId).attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(url);
+    };
+
+    $('#camera-input').change(function() {
+        loadMedia(this.files[0], 'create-photo');
+        $('#create-photo').show();
+    });
+
+    $('#video-input').change(function() {
+        loadMedia(this.files[0], 'create-video');
+    });
+
 
     $('.create-nav').click(function() {
         var step = $(this).attr('id');
@@ -192,6 +214,7 @@ $(document).ready(function() {
     $('#create-btn').click(function() {
         resetPages();
         $(this).hide();
+        $('#main-banner').show();
         loadCreate();
     });
 
