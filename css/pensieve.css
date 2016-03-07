@@ -373,6 +373,12 @@ div.create-nav {
     z-index: 100;
 }
 
+#create-nav-line {
+    position: fixed;
+    left: 0px;
+    top: 112px;
+}
+
 #media {
     left:0px;
     background-image: url('../img/sketch/media-selected.png');
