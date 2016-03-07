@@ -186,6 +186,7 @@ $(document).ready(function() {
 
     $('#video-input').change(function() {
         loadMedia(this.files[0], 'create-video');
+        $('#create-video').show();
     });
 
 
