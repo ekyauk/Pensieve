@@ -351,9 +351,7 @@ div.share-heading {
 }
 
 #condition-text {
-    position: fixed;
-    top: 47%;
-    left: 10%;
+    margin-left: 10%;
     width: 80%;
 }
 
