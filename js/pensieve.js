@@ -210,6 +210,8 @@ $(document).ready(function() {
         if (step != 'create-nav-line') {
             selectCreateNavItem(step);
             showCreateNavPage(step);
+        } else if (step != 'send') {
+            $('#final-users').empty();
         }
     });
 
@@ -223,8 +225,10 @@ $(document).ready(function() {
                     //Finish sharing!
                 } else {
                     //Pick the next item
-                    selectCreateNavItem(createNavArr[changeIndex]);
-                    showCreateNavPage(createNavArr[changeIndex]);
+                    var nextStep = createNavArr[changeIndex];
+                    selectCreateNavItem(nextStep);
+                    showCreateNavPage(nextStep);
+                    if (nextStep == 'send') loadPreviewText();
                     return;
                 }
             }
@@ -232,6 +236,15 @@ $(document).ready(function() {
     });
 
     //Sharing
+
+    var sharedUsers = function() {
+        var users = [];
+        for (var i = 0; i < $('.share-cb').length; i++) {
+            var obj = $('.share-cb')[i];
+            if ($(obj).hasClass('checked')) users.push($(obj).attr('id'));
+        }
+        return users;
+    }
 
     $('.share-cb').click(function() {
         if ($(this).hasClass('unchecked')) {
@@ -243,17 +256,27 @@ $(document).ready(function() {
         }
     });
 
-    $('.checked').click(function() {
-
-    });
-
     //bottom nav bar buttons
     $('#inbox-btn').click(function() {
         resetPages();
         loadInbox();
     });
 
-    //bottom nav bar buttons
+
+    $('#create-btn').click(function() {
+        resetPages();
+        $(this).hide();
+        $('#main-banner').show();
+        loadCreate();
+    });
+
+    $('#sent-btn').click(function() {
+        resetPages();
+        loadSent();
+    });
+
+
+    //sharing condition
     $('#location-condition-butt').click(function() {
         loadSpecificConditionPage('location')
     });
@@ -266,14 +289,20 @@ $(document).ready(function() {
         loadSpecificConditionPage('life-event')
     });
 
+//send
+    var loadPreviewText = function() {
+        var recipients = sharedUsers();
+        var recipientsText = '';
+        for (var i = 0; i < recipients.length; i++) {
+            recipientsText += recipients[i];
+            if (i < recipients.length -1) recipientsText += ', '
+        }
+        $('#final-users').text(recipientsText);
+    }
 
-    $('#create-btn').click(function() {
-        resetPages();
-        $(this).hide();
-        $('#main-banner').show();
-        loadCreate();
+    $('#send').click(function() {
+        loadPreviewText();
     });
-
 
     $('#unlocked-table').on('click', 'td', function() {
         var id = $(this).attr('id');
@@ -293,8 +322,5 @@ $(document).ready(function() {
         }
     });
 
-    $('#sent-btn').click(function() {
-        resetPages();
-        loadSent();
-    });
+
 });

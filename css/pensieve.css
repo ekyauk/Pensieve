@@ -375,6 +375,17 @@ div.share-heading {
     height: 100%;
 }
 
+#final-users {
+    color: #F78B0D;
+    display: inline-block;
+}
+
+#final-message {
+    position: fixed;
+    top: 290px;
+    left: 30px;
+}
+
 /**** Bottom Navigation ****/
 
 #inbox-btn {
