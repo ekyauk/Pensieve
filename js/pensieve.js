@@ -134,6 +134,13 @@ $(document).ready(function() {
             $('#' + nav + '-page').hide();
         }
         $('#' + step + '-page').show();
+        var bannerText = '';
+        if (step == 'media') bannerText = 'Upload';
+        if (step == 'share') bannerText = 'Share with';
+        if (step == 'condition') bannerText = 'Set Condition';
+        if (step == 'send') bannerText = 'Finish Sharing';
+
+        $('#banner-text').text(bannerText);
     }
 
     $('.create-options').click(function() {
