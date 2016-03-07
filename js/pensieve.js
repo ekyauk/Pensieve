@@ -1,12 +1,12 @@
 
 $(document).ready(function() {
 
-    var sentMemories = [{'person':'Dad', 'created':'3/5/2016', 'image':'img/cameraroll/1.jpg', 'message':'test memory', 'condition':'50th birthday'}
+    var sentMemories = [{'person':'Dad', 'created':'3/5/2016', 'image':'img/cameraroll/1.jpg', 'message':'test memory', 'icon':'photo', 'condition':'50th birthday'}
                         ];
 
     var unlockedMemories = [
-        {'person':'Grandpa', 'icon':'landscape', 'created':'2/5/1975', 'unlocked':'2/25/2016', 'image':'img/unlockedImages/1.jpg', 'condition': 'it\'s your 16th birthday'},
-        {'person':'Dad', 'icon':'landscape', 'created':'2/5/1985', 'unlocked':'2/4/2016', 'image':'img/unlockedImages/2.jpg', 'condition': 'you travel to New York'},
+        {'person':'Grandpa', 'icon':'photo', 'created':'2/5/1975', 'unlocked':'2/25/2016', 'image':'img/unlockedImages/1.jpg', 'condition': 'it\'s your 16th birthday'},
+        {'person':'Dad', 'icon':'photo', 'created':'2/5/1985', 'unlocked':'2/4/2016', 'image':'img/unlockedImages/2.jpg', 'condition': 'you travel to New York'},
         {'person':'Robin', 'icon':'mail', 'created':'1/6/2015', 'unlocked':'3/4/2016', 'image':'img/unlockedImages/3.jpg', 'condition':'you take your MCAT'},
         {'person':'Mom', 'icon':'mail','created':'6/6/1994', 'unlocked':'3/25/2016', 'image':'img/unlockedImages/4.jpg', 'condition':'you travel to Hawaii', 'message':'Happy 23rd birthday! Isnt it crazy that I am writing you before you are even born?! This is a photo of your dad and I when we got engaged yesterday. Thought you might like to see us when we were 23 as well.'}
     ];
@@ -44,7 +44,7 @@ $(document).ready(function() {
         var tableContent = '';
         for (var i = 0; i < memoryArr.length; i++) {
             var memory = memoryArr[i];
-            var memoryHtml = '<div class="memory"><div style="float: left; position: relative; top: 2px;"><img class="lock-icon2" src="img/sketch/'+ memory['icon'] + '-unlock.png"/></div><div class="title">' + memory['person'] + '</div><div class="mem-info" style="font-size: 11px">Created ' + memory['created'] + '<br/>' + (memory['unlocked'] != null ? 'Unlocked ' + memory['unlocked'] : '') +'</div></div>';
+            var memoryHtml = '<div class="memory"><div style="float: left; position: relative; top: 2px;"><img class="lock-icon2" src="img/sketch/'+ memory['icon'] + '-icon.png"/></div><div class="title">' + memory['person'] + '</div><div class="mem-info" style="font-size: 11px">Created ' + memory['created'] + '<br/>' + (memory['unlocked'] != null ? 'Unlocked ' + memory['unlocked'] : '<br/>') +'</div></div>';
             var tdHmtl = '<td class="memory-cell" id="' + tableId + i + '"style="background-image:url(' + memory['image'] + ');">' + memoryHtml + '</td>';
             if (i % 2 == 0) {
                 tdHmtl = '<tr>' + tdHmtl;
@@ -168,15 +168,18 @@ $(document).ready(function() {
 // Loading media
     $('#photo-btn').click(function() {
         $('#camera-input').trigger('click');
+        $('#preview-icon').attr('src', 'img/sketch/photo-icon.png');
 
     });
 
     $('#video-btn').click(function() {
         $('#video-input').trigger('click');
+        $('#preview-icon').attr('src', 'img/sketch/video-icon.png');
     });
 
     $('#sound-btn').click(function() {
         $('#sound-input').trigger('click');
+        $('#preview-icon').attr('src', 'img/sketch/sound-icon.png');
     });
 
 // Rendering media
