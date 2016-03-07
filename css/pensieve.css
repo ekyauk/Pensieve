@@ -279,6 +279,12 @@ div.create-options {
     width: 370px;
 }
 
+#send-page {
+    display: none;
+    position: absolute;
+    top: 120px;
+}
+
 #media-container {
     position: fixed;
     display: block;
@@ -307,7 +313,7 @@ input.media-input {
     display: none;
 }
 
-/**** Condition checkboxes *****/
+/**** Share Page *****/
 
 .share-cb {
     display: inline-block;
@@ -334,6 +340,39 @@ div.cb-label {
 div.share-heading {
     margin-left: 30px;
     font-weight: 500;
+}
+/**** Send Page ****/
+#media-preview {
+    position: fixed;
+    display: inline-block;
+    background-size: cover;
+    top: 140px;
+    margin-left: 30px;
+    width: 125px;
+    height: 125px;
+}
+
+
+#create-message {
+    position: fixed;
+    top: 140px;
+    right: 30px;
+    height: 125px;
+    width: 162px;
+}
+
+#icon-banner {
+    background-color: white;
+    position: absolute;
+    height: 40px;
+    width: 100%;
+    opacity: 0.75;
+    left: 0px;
+    bottom: 0px;
+}
+
+#preview-icon {
+    height: 100%;
 }
 
 /**** Bottom Navigation ****/

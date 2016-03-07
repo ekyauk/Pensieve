@@ -125,8 +125,8 @@ $(document).ready(function() {
     var createNavArr = ['media', 'share', 'condition', 'send'];
 
     var resetCreateNav = function() {
-        for (var i = 0; i < $('.create-nav').length; i++) {
-            var obj = $($('.create-nav')[i])
+        for (var i = 0; i < createNavArr.length; i++) {
+            var obj = $('#' + createNavArr[i])
             obj.css('background-image', 'url(img/sketch/' + obj.attr('id') + '-unselected.png')
         }
     }
@@ -188,6 +188,7 @@ $(document).ready(function() {
         var reader = new FileReader();
         reader.onload = function(e) {
             $('#' + mediaId).attr('src', e.target.result);
+            $('#media-preview').css('background-image', 'url(' + e.target.result +')');
         }
 
         reader.readAsDataURL(url);
@@ -206,8 +207,10 @@ $(document).ready(function() {
 
     $('.create-nav').click(function() {
         var step = $(this).attr('id');
-        selectCreateNavItem(step);
-        showCreateNavPage(step);
+        if (step != 'create-nav-line') {
+            selectCreateNavItem(step);
+            showCreateNavPage(step);
+        }
     });
 
     $('#banner-next').click(function() {
