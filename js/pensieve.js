@@ -295,6 +295,7 @@ $(document).ready(function() {
         if (condition == 'time') {
             conditionInstructions = 'Enter a date and time.'
             conditionPlaceholder = 'e.g. 3/6/2016'
+            $('#condition-text').attr('type', 'date');
         } else
 
         if (condition == 'location') {
