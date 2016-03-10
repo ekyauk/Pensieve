@@ -419,6 +419,9 @@ $(document).ready(function() {
         if (e.pageX < 10 && e.pageY < 10) {
             $('#locked-notif').show();
         }
+        if (e.pageX > 370 && e.pageY < 10) {
+            $('#unlocked-notif').show();
+        }
     });
     $('#locked-notif').click(function() {
         var newMemory = {'person':'Son', 'icon':'video', 'created':'3/12/2016', 'condition': 'Run a marathon.'};
@@ -426,6 +429,14 @@ $(document).ready(function() {
         $(this).remove();
         $('#locked-tab').trigger('click');
         loadInbox();
+    });
+
+    $('#unlocked-notif').click(function() {
+        var newMemory = {'person':'Wild Caff', 'icon':'video', 'created':'11/9/2015', 'condition': 'Visit UC Berkeley.',  'message':'I had so many great runs in this game! This was one of my favorite games in the 2015 season.', 'media':'img/sketch/caff.png'};
+        unlockedMemories.unshift(newMemory);
+        $(this).remove();
+        $('#unlocked-tab').trigger('click');
+        loadMemoryPage(unlockedMemories[0], 'Memory from ' + unlockedMemories[0]['person'], true);
     });
 
     $('#landing').fadeOut(2000);
