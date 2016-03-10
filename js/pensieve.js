@@ -290,8 +290,10 @@ $(document).ready(function() {
     });
 
     $('#record-btn').on({'touchstart': function() {
-        $('#record-directions').text('Recording...')
-        $(this).attr('src', 'img/sketch/microphone-pressed.png')
+        if ($('#record-directions').text() != 'Done!') {
+            $('#record-directions').text('Recording...')
+            $(this).attr('src', 'img/sketch/microphone-pressed.png')
+        }
     }});
 
     $('#record-btn').on({'touchend': function() {
