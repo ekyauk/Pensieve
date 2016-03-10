@@ -16,7 +16,7 @@
 
 @font-face {
     font-family: 'Lantinghei TC';
-    src: url('../font/Lantinghei.ttc') format('truetype');
+    src: url('../font/lantinghei.ttf') format('truetype');
 }
 
 #locked-memories {
@@ -301,6 +301,7 @@ div.create-options {
     height: 300px;
     top: 150px;
     left: 32px;
+    text-align: center;
     overflow: hidden;
 
 }
@@ -315,6 +316,10 @@ div.create-options {
 }
 
 #create-video {
+    display: none;
+}
+
+#create-sound {
     display: none;
 }
 
@@ -407,7 +412,8 @@ div.share-heading {
 #final-message {
     position: fixed;
     top: 290px;
-    left: 30px;
+    left: 10%;
+    width: 80%;
 }
 
 .final-message {

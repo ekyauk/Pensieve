@@ -1,6 +1,10 @@
 
 $(document).ready(function() {
 
+    $(document).bind("contextmenu", function(e) {
+        return false;
+    });
+
     var sentMemories = [{'person':'Dad', 'created':'3/5/2016', 'media':'img/cameraroll/1.jpg', 'message':'test memory', 'icon':'photo', 'condition':'50th birthday'}
                         ];
 
@@ -185,8 +189,8 @@ $(document).ready(function() {
     });
 
     $('#sound-btn').click(function() {
-        $('#sound-input').trigger('click');
-        $('#preview-icon').attr('src', 'img/sketch/sound-icon.png');
+        $('#create-sound').show();
+        $('#media-preview').css('background-image', 'url(img/sketch/sound-icon.png)');
         currentMemory['icon'] = 'sound';
     });
 
@@ -284,6 +288,16 @@ $(document).ready(function() {
         resetPages();
         loadSent();
     });
+
+    $('#record-btn').on({'touchstart': function() {
+        $('#record-directions').text('Recording...')
+        $(this).attr('src', 'img/sketch/microphone-pressed.png')
+    }});
+
+    $('#record-btn').on({'touchend': function() {
+        $('#record-directions').text('Done!')
+        $(this).attr('src', 'img/sketch/microphone.png')
+    }});
 
 
     //sharing conditions
