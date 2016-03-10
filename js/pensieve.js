@@ -416,10 +416,10 @@ $(document).ready(function() {
     //Notifications
 
     $('#main-banner').click(function(e) {
-        if (e.pageX < 10 && e.pageY < 10) {
+        if (e.pageX < 20 && e.pageY < 20) {
             $('#locked-notif').show();
         }
-        if (e.pageX > 370 && e.pageY < 10) {
+        if (e.pageX > 360 && e.pageY < 20) {
             $('#unlocked-notif').show();
         }
     });
