@@ -5,15 +5,26 @@ $(document).ready(function() {
         return false;
     });
 
+
     var sentMemories = [{'person':'Dad', 'created':'3/5/2016', 'media':'img/cameraroll/1.jpg', 'message':'test memory', 'icon':'photo', 'condition':'50th birthday'}
                         ];
 
     var unlockedMemories = [
         {'person':'Grandpa', 'icon':'photo', 'created':'2/5/1975', 'unlocked':'2/25/2016', 'media':'img/unlockedImages/1.jpg', 'condition': 'it\'s your 16th birthday'},
         {'person':'Dad', 'icon':'photo', 'created':'2/5/1985', 'unlocked':'2/4/2016', 'media':'img/unlockedImages/2.jpg', 'condition': 'you travel to New York'},
+        {'person':'Robin', 'icon':'mail', 'created':'1/6/2015', 'unlocked':'3/4/2016', 'media':'img/unlockedImages/3.jpg', 'condition':'you take your MCAT'},{'person':'Grandpa', 'icon':'photo', 'created':'2/5/1975', 'unlocked':'2/25/2016', 'media':'img/unlockedImages/1.jpg', 'condition': 'it\'s your 16th birthday'},
+        {'person':'Dad', 'icon':'photo', 'created':'2/5/1985', 'unlocked':'2/4/2016', 'media':'img/unlockedImages/2.jpg', 'condition': 'you travel to New York'},
         {'person':'Robin', 'icon':'mail', 'created':'1/6/2015', 'unlocked':'3/4/2016', 'media':'img/unlockedImages/3.jpg', 'condition':'you take your MCAT'},
         {'person':'Mom', 'icon':'mail','created':'6/6/1994', 'unlocked':'3/25/2016', 'media':'img/unlockedImages/4.jpg', 'condition':'you travel to Hawaii', 'message':'Happy 23rd birthday! Isnt it crazy that I am writing you before you are even born?! This is a photo of your dad and I when we got engaged yesterday. Thought you might like to see us when we were 23 as well.'}
     ];
+
+    var lockedMemories = [
+        {'person':'Grandpa', 'icon':'video', 'created':'2/5/1975', 'condition': '12/25/2020'},
+        {'person':'Mom', 'icon':'sound', 'created':'8/5/1985', 'condition': 'Travel to Half Moon Bay, CA'},
+        {'person':'Aunt Carol', 'icon':'mail', 'created':'1/8/2015', 'condition':'Your wedding day'},
+        {'person':'Grandma', 'icon':'sound', 'created':'12/5/1995', 'condition': 'Travel to Italy'},
+        {'person':'Laura', 'icon':'video', 'created':'1/8/2016', 'condition':'When you graduate'},
+    ]
 
     var currentMemory = {};
 
@@ -51,8 +62,15 @@ $(document).ready(function() {
         var tableContent = '';
         for (var i = 0; i < memoryArr.length; i++) {
             var memory = memoryArr[i];
-            var memoryHtml = '<div class="memory"><div style="float: left; position: relative; top: 2px;"><img class="lock-icon2" src="img/sketch/'+ memory['icon'] + '-icon.png"/></div><div class="title">' + memory['person'] + '</div><div class="mem-info" style="font-size: 11px">Created ' + memory['created'] + '<br/>' + (memory['unlocked'] != null ? 'Unlocked ' + memory['unlocked'] : '<br/>') +'</div></div>';
-            var tdHmtl = '<td class="memory-cell" id="' + tableId + i + '"style="background-image:url(' + memory['media'] + ');">' + memoryHtml + '</td>';
+            var memoryHtml = '';
+            var htmlStyle = '';
+            if (memory['media'] == null) {
+                memoryHtml = '<div class="unlock-param-text">' + memory['condition'] + '</div>';
+            } else {
+                htmlStyle = 'style="background-image:url(' + memory['media'] + ');"'
+            }
+            memoryHtml += '<div class="memory"><div style="float: left; position: relative; top: 2px;"><img class="lock-icon2" src="img/sketch/'+ memory['icon'] + '-icon.png"/></div><div class="title">' + memory['person'] + '</div><div class="mem-info" style="font-size: 11px">Created ' + memory['created'] + '<br/>' + (memory['unlocked'] != null ? 'Unlocked ' + memory['unlocked'] : '<br/>') +'</div></div>';
+            var tdHmtl = '<td class="memory-cell" id="' + tableId + i + '"' + htmlStyle + '>' + memoryHtml + '</td>';
             if (i % 2 == 0) {
                 tdHmtl = '<tr>' + tdHmtl;
             } else {
@@ -71,6 +89,7 @@ $(document).ready(function() {
         $('#alt-banner').hide();
         $('#main-banner').show();
         loadTable('unlocked-table', unlockedMemories);
+        loadTable('locked-table', lockedMemories);
     };
 
     var loadSent = function() {
@@ -86,10 +105,6 @@ $(document).ready(function() {
         $('#main-banner').show();
         $('#create').show();
     }
-
-    $('#landing').fadeOut(2000);
-    loadTable('unlocked-table', unlockedMemories);
-
 
     //locked-unlocked tabs
     $('#unlocked-tab').click(function() {
@@ -398,5 +413,23 @@ $(document).ready(function() {
         }
     });
 
+    //Notifications
+
+    $('#main-banner').click(function(e) {
+        if (e.pageX < 10 && e.pageY < 10) {
+            $('#locked-notif').show();
+        }
+    });
+    $('#locked-notif').click(function() {
+        var newMemory = {'person':'Son', 'icon':'video', 'created':'3/12/2016', 'condition': 'Run a marathon.'};
+        lockedMemories.unshift(newMemory);
+        $(this).remove();
+        $('#locked-tab').trigger('click');
+        loadInbox();
+    });
+
+    $('#landing').fadeOut(2000);
+    loadTable('unlocked-table', unlockedMemories);
+    loadTable('locked-table', lockedMemories);
 
 });
