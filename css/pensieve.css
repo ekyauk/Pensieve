@@ -15,10 +15,19 @@
 }
 
 @font-face {
-    font-family: 'Lantinghei SC';
-    src: url('../font/lantinghei.ttf') format('truetype');
+    font-family: 'Lantinghei TC';
+    src: url('../font/Lantinghei TC Normal.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
+@font-face {
+    font-family: 'Lantinghei TC';
+    src: url('../font/Lantinghei TC Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+
+}
 #locked-memories {
     display: none;
 }
@@ -26,7 +35,7 @@
 body {
     overflow-x: hidden;
     font-size: 20px;
-    font-family: 'Lantinghei TC', 'Lantinghei SC', 'Open Sans';
+    font-family: 'Lantinghei TC', 'Open Sans', Arial, sans-serif;
 
     /* Turn off selection */
     -webkit-touch-callout: none; /* iOS Safari */
