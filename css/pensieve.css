@@ -98,12 +98,14 @@ img.top-navi {
 
 #unlocked-tab {
     background-image: url('../img/sketch/unlocked-selected.jpg');
+    background: no-repeat;
     left:0px;
 }
 
 
 #locked-tab {
     background-image: url('../img/sketch/locked-unselected.jpg');
+    background: no-repeat;
     left:50%;
 }
 

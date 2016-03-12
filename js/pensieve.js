@@ -5,6 +5,7 @@ $(document).ready(function() {
         return false;
     });
 
+    var originalCreate = $('#create').clone();
 
     var sentMemories = [{'person':'Dad', 'created':'3/5/2016', 'media':'img/cameraroll/1.jpg', 'message':'test memory', 'icon':'photo', 'condition':'50th birthday'}
                         ];
@@ -69,7 +70,7 @@ $(document).ready(function() {
             } else {
                 htmlStyle = 'style="background-image:url(' + memory['media'] + ');"'
             }
-            memoryHtml += '<div class="memory"><div style="float: left; position: relative; top: 2px;"><img class="lock-icon2" src="img/sketch/'+ memory['icon'] + '-icon.png"/></div><div class="title">' + memory['person'] + '</div><div class="mem-info" style="font-size: 11px">Created ' + memory['created'] + '<br/>' + (memory['unlocked'] != null ? 'Unlocked ' + memory['unlocked'] : '<br/>') +'</div></div>';
+            memoryHtml += '<div class="memory"><div style="float: left; position: relative; top: 2px;"><img class="lock-icon2" src="img/sketch/'+ memory['icon'] + '-icon.png"/></div><div class="title">' + memory['person'] + '</div><div class="mem-info" style="font-size: 11px">Created ' + memory['created'] + '<br/>' + (memory['unlocked'] != null ? 'Unlocked ' + memory['unlocked'] : 'Not unlocked yet') +'</div></div>';
             var tdHmtl = '<td class="memory-cell" id="' + tableId + i + '"' + htmlStyle + '>' + memoryHtml + '</td>';
             if (i % 2 == 0) {
                 tdHmtl = '<tr>' + tdHmtl;
@@ -126,6 +127,7 @@ $(document).ready(function() {
         $('#banner-next').show(); //so the button shows next time
         $('.bottom-nav').show();
         hideAllCreatePages();
+        $('#create').replaceWith(originalCreate.clone());
         if ($('#inbox-btn').hasClass('selected-btn')) {
             resetPages();
             loadInbox();
